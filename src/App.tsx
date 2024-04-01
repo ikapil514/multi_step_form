@@ -7,7 +7,7 @@ import SecondQuestion from "./secondQuestion";
 import ThirdQuestion from "./thirdQuestion";
 import WorkEmailPage from "./workEmailPage";
 import ThankyouPage from "./thankyouPage";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { TextField } from "@mui/material";
 
 function App() {
@@ -30,18 +30,32 @@ function App() {
   }, [curremtStepIndex]);
 
   const [email, setEmail] = useState("");
-
+  const [helptext, setHelptext] = useState(false);
   const [name, setName] = useState("");
 
   function handleEmail(event: any) {
     event.preventDefault;
-    setEmail(event.target.value);
+    const value = event.target.value;
+    const emalValid =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (!emalValid.test(value)) {
+      setHelptext(true);
+    } else {
+      setHelptext(false);
+    }
+    setEmail(value);
   }
 
   function handleName(event: any) {
     event.preventDefault;
     setName(event.target.value);
   }
+
+  useEffect(() => {
+    if (curremtStepIndex === 6) {
+      window.localStorage.clear();
+    }
+  }, [curremtStepIndex]);
 
   return (
     <div className="main-div">
@@ -71,7 +85,6 @@ function App() {
             </p>
             <TextField
               placeholder="example@gmail.com"
-              required
               type="email"
               size="small"
               onChange={handleEmail}
@@ -94,7 +107,7 @@ function App() {
       <div>
         {changeButton && (
           <button
-            disabled={(email && name) === "" ? true : false}
+            disabled={!(!!email && !!name && !helptext)}
             className="button-theme mt-10"
             onClick={handleNextBtn}
           >
