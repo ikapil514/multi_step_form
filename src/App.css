@@ -1,0 +1,110 @@
+:root{
+  --options-button: #ffaaad;
+  --primary-text-color: black;
+  --secondary-text-color: white;
+  --primary-button: black;
+  --primary-button-hover: #262729;
+  --background-color:black;
+  --border-color: #d3d3d3;
+  --options-background-color: #828282;
+}
+
+
+.main-div{
+  padding: 40px 20%;
+}
+
+
+.input-fields{
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.form-headline{
+  margin-top: 35px;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--primary-text-color);
+}
+
+.sub-heading{
+  margin: 10px 0;
+}
+
+.button-theme{
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-weight: 500;
+  padding: 5px 10px;
+  text-align: center;
+  font-size: medium;
+  background-color: var(--background-color);
+  cursor: pointer;
+  color: var(--secondary-text-color);
+  transition: border-color 0.25s;
+  display: flex;
+  align-items: center;
+}
+
+.button-theme:hover {
+  background-color: var(--primary-button-hover);
+}
+
+.button-theme:disabled{
+  cursor: pointer;
+  background-color: var(--options-background-color);
+}
+
+.homepage-div{
+  font-size: 28px;
+  line-height: 36px;
+}
+
+.options-btn, .options-selected{
+  display: flex;
+  border: 2px solid var(--border-color);
+  padding: 8px ;
+  border-radius: 7px;
+  margin: 8px 0;
+}
+
+.options-selected{
+  border-color: var(--options-button);
+}
+
+.options-id, .options-selected-id{
+  padding: 1px 6px ;
+  border-radius: 5px;
+  color: var(--secondary-text-color);
+  background-color: var(--options-background-color);
+  font-weight: 700;
+  font-size: small;
+  margin-right: 8px;
+}
+
+.options-selected-id{
+  background-color: var(--options-button);
+}
+
+.big-img{
+  margin-top: 15px;
+  background-image: url("../todos.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 40vh;
+  width:  100%;
+}
+
+@media all and ( max-width:550px){
+  .main-div{
+    padding: 20px 5%;
+  }
+  .homepage-div{
+    font-size: 20px;
+  }
+  .form-headline{
+    font-size: 17px;
+  }
+}
